@@ -18,5 +18,4 @@ def browser(language=None):
     browser = webdriver.Chrome(options=options)
     browser.maximize_window()
     yield browser
-    time.sleep(100)
     browser.quit()

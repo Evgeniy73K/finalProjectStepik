@@ -27,10 +27,20 @@ class ProductPage(BasePage):
             print("No second alert presented")
 
     def should_be_success_alert(self):
-        assert self.is_element_present(*ProductPageLocators.SUCCESS_ALERT), "Success alert is not presented"
+        product_name_in_alert_name = self.browser.find_element(By.XPATH, "//div[@class=\"alert alert-safe alert-noicon alert-success  fade in\"]//strong")
+        product_name = self.browser.find_element(By.XPATH, "//div[@class=\"col-sm-6 product_main\"]/h1")
+        assert product_name_in_alert_name.text == product_name.text, "names are not equals"
+        i = 0
 
     def should_be_product_price_equals_cart_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
         cart_price = self.browser.find_element(*ProductPageLocators.CART_PRICE)
         assert product_price.text in cart_price.text, "product price and cart price are not equals"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_not_be_is_disappeared_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"

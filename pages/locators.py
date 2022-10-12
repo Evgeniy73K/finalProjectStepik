@@ -12,6 +12,6 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
-    SUCCESS_ALERT = (By.CSS_SELECTOR, ".alert-success")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")
     PRODUCT_PRICE = (By.XPATH, "//p[@class=\"price_color\"]")
     CART_PRICE = (By.CSS_SELECTOR, ".basket-mini")

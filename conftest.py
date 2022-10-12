@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,5 +16,7 @@ def browser(language=None):
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': language})
     browser = webdriver.Chrome(options=options)
+    browser.maximize_window()
     yield browser
+    time.sleep(100)
     browser.quit()
